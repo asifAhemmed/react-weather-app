@@ -1,10 +1,11 @@
+import Page from "./page";
 
 
 const App = () => {
   return (
-    <div>
-      
-    </div>
+    <>
+      <Page />
+    </>
   );
 };
 

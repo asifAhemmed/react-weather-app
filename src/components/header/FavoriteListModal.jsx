@@ -11,9 +11,11 @@ const FavoriteListModal = () => {
             <ul className="space-y-2 mt-4 *:py-2 *:px-4 *:cursor-pointer">
                 {favorites.length === 0 && <li className="hover:bg-gray-200">No favorite location</li>}
                 {
-                    favorites.map(favorite =>
-                        <li key={favorite.location} className="hover:bg-gray-200"
-                            onClick={() => setSelectedLocation({ longitude: favorite.longitude, latitude: favorite.latitude, location: favorite.location })}>{favorite.location}
+                    favorites.map(fav =>
+                        <li key={fav.location} className="hover:bg-gray-200">
+                            <a onClick={() => setSelectedLocation({ ...fav })}>
+                                {fav.location}
+                            </a>
                         </li>
                     )
                 }

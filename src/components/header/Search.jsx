@@ -8,7 +8,6 @@ const Search = () => {
     const {setSelectedLocation} = useContext(LocationContext);
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("clicked")
         const { longitude, latitude, location } = getLocationByName(searchTerm);
         setSelectedLocation({ longitude, latitude, location });
     }

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import HeartIcon from "../../assets/heart.svg";
 import RedHeartIcon from "../../assets/heart-red.svg";
 import { FavoriteContext, WeatherContext } from "../../context";
@@ -8,6 +8,10 @@ const AddToFavorite = () => {
     const { favorites,addToFavorites,removeFromFavorites } = useContext(FavoriteContext);
     const { weatherData } = useContext(WeatherContext);
     const { location,longitude,latitude } = weatherData;
+    useEffect(() => {
+        const found = favorites.find((fav) => fav.location === location);
+        setIsFavorite(found);
+    }, []);
     const handleFavorite = () => {
         const found = favorites.find(favorite => favorite.location === location);
         if(!found) {

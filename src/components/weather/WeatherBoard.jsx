@@ -1,9 +1,14 @@
+import { useContext } from "react";
 import AddToFavorite from "./AddToFavorite";
 import WeatherCondition from "./WeatherCondition";
 import WeatherHeadline from "./WeatherHeadline";
+import { WeatherContext } from "../../context";
 
 
 const WeatherBoard = () => {
+    const { loading, error } = useContext(WeatherContext);
+    if (loading.state) return <p>{loading.message}</p>;
+    if (error) return <p>{error.message}</p>;
     return (
         <div className="container">
             <div

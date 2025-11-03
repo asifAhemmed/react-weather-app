@@ -26,15 +26,17 @@ const useWeather = () => {
         state: true,
         message: "Loading fetching weather data...",
       });
-      const response =
-        await fetch()`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${
           import.meta.env.VITE_WEATHER_API_KEY
-        }&units=metric`;
+        }&units=metric`
+      );
       if (!response.ok) {
         const message = `Error ${response.status}: ${response.statusText}`;
         throw new Error(message);
       }
       const data = await response.json();
+      console.log(data)
       const updatedWeatherData = {
         ...weatherData,
         location: data?.name,
@@ -77,6 +79,5 @@ const useWeather = () => {
     error,
   };
 };
-
 
 export default useWeather;
